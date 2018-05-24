@@ -703,7 +703,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 				$price = 0;
 			} else {
 				$theUser = learn_press_get_current_user();
-				$userCourses = learn_press_get_all_courses();
+				//$userCourses = learn_press_get_all_courses();
 				$hasPaid = false;
 				if (sizeof($theUser->get_purchased_courses()) > 0){
 					$hasPaid = true;
