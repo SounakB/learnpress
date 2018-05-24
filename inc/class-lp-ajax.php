@@ -321,7 +321,7 @@ if ( ! class_exists( 'LP_AJAX' ) ) {
 						$response['redirect'] = $course->get_item_link( $next );
 					}
 
-					learn_press_add_message( sprintf( __( 'Congrats! You have completed "%s".', 'learnpress' ), $item->get_title() ) );
+					//learn_press_add_message( sprintf( __( 'Congrats! You have completed "%s".', 'learnpress' ), $item->get_title() ) );
 				} else {
 					learn_press_add_message( $result->get_error_message(), 'error' );
 				}
