@@ -36,7 +36,7 @@ $user   = LP_Global::user();
                value="<?php echo esc_attr( wp_create_nonce( sprintf( 'retake-course-%d-%d', $course->get_id(), $user->get_id() ) ) ); ?>"/>
 
         <button class="lp-button button button-retake-course">
-			<?php echo esc_html( sprintf( apply_filters( 'learn-press/retake-course-button-text', __( 'Retake course (+%d)', 'learnpress' ) ), $count ) ); ?>
+			<?php echo esc_html( sprintf( apply_filters( 'learn-press/retake-course-button-text', __( 'Retake course?', 'learnpress' ) )) ); ?>
         </button>
 
         <input type="hidden" name="lp-ajax" value="retake-course"/>

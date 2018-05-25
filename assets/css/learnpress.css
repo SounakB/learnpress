@@ -1409,9 +1409,6 @@ body .lp-quiz-buttons .form-button-finish-course {
 
 button[data-counter] {
   position: relative; }
-  button[data-counter]:after {
-    content: "(+" attr(data-counter) ")";
-    padding-left: 5px; }
 
 .quiz-result {
   max-width: 400px;
