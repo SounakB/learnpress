@@ -23,5 +23,6 @@ if ( ! $content = $lesson->get_content() ) {
 	return;
 }
 ?>
-
 <div class="content-item-description lesson-description"><?php echo $content; ?></div>
+<br /> 
+<div style="text-align: center;" class="img-responsive aligncenter"><?php echo $lesson->get_image() ?></div>

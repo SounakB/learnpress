@@ -227,6 +227,7 @@ if ( ! class_exists( 'LP_Lesson_Post_Type' ) ) {
 						'title',
 						'editor',
 						'post-formats',
+						'thumbnail',
 						'revisions',
 						'comments'
 					),

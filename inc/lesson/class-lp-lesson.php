@@ -196,7 +196,25 @@ if ( ! function_exists( 'LP_Lesson' ) ) {
 		private static function get_class_name_from_lesson_type( $lesson_type ) {
 			return LP_LESSON_CPT === $lesson_type ? __CLASS__ : 'LP_Lesson_' . implode( '_', array_map( 'ucfirst', explode( '-', $lesson_type ) ) );
 		}
-
+		/**
+		 * @param int $size
+		 * @return image
+		 */
+		public function get_image( $size = 'course_thumbnail', $attr = array() ) {
+			$attr  = wp_parse_args(
+				$attr,
+				array(
+					'alt' => $this->get_title()
+				)
+			);
+			$image = false;
+			if ( has_post_thumbnail( $this->get_id()) ) {
+				$image = get_the_post_thumbnail( $this->get_id(), $size, $attr );
+			} elseif ( ( $parent_id = wp_get_post_parent_id( $this->get_id() ) ) && has_post_thumbnail( $parent_id ) ) {
+				$image = get_the_post_thumbnail( $parent_id, $size, $attr );
+			}
+			return apply_filters( 'learn_press_course_image', $image, $this->get_id(), $size, $attr );
+		}
 		/**
 		 * Get the lesson class name
 		 *
