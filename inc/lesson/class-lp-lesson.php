@@ -200,7 +200,7 @@ if ( ! function_exists( 'LP_Lesson' ) ) {
 		 * @param int $size
 		 * @return image
 		 */
-		public function get_image( $size = 'course_thumbnail', $attr = array() ) {
+		public function get_image( $size = 'medium', $attr = array() ) {
 			$attr  = wp_parse_args(
 				$attr,
 				array(

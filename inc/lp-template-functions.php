@@ -841,7 +841,7 @@ if ( ! function_exists( 'learn_press_content_item_summary_question_numbers' ) ) 
 		if ( ! $quiz->get_viewing_question() ) {
 			return;
 		}
-		learn_press_get_template( 'content-quiz/question-numbers.php' );
+		//learn_press_get_template( 'content-quiz/question-numbers.php' );
 	}
 }
 
