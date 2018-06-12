@@ -39,6 +39,7 @@ $user = LP_Global::user();
 					if ( $user->can_view_item( $item->get_id() ) ) {
 						?>
                         <a class="section-item-link" href="<?php echo $item->get_permalink(); ?>">
+						
 							<?php learn_press_get_template( 'single-course/section/content-item.php', array(
 								'item'    => $item,
 								'section' => $section

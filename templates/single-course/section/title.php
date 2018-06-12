@@ -44,6 +44,7 @@ $title = $section->get_title();
 		<?php $percent = $user_course->get_percent_completed_items( '', $section->get_id() ); ?>
 
         <div class="section-meta">
+        <span class="chevy glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <div class="learn-press-progress section-progress" title="<?php echo intval( $percent ); ?>%">
                 <div class="progress-bg">
                     <div class="progress-active primary-background-color" style="left: <?php echo $percent; ?>%;"></div>

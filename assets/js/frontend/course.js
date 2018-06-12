@@ -113,6 +113,7 @@
          * Show/Hide section content
          */
         function toggleSection() {
+            $(this).find('.glyphicon').toggleClass('glyphicon-chevron-up, glyphicon-chevron-down');
             var id = $(this).closest('.section').data('section-id');
             $(this).siblings('.section-content').slideToggle(function () {
                 if ($(this).is(':visible')) {

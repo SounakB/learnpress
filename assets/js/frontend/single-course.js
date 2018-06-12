@@ -503,6 +503,8 @@ if (typeof LearnPress === 'undefined') {
             var $head = $(e.target).closest('.section-header'),
                 $sec = $head.siblings('ul.section-content');
             $head.find('.collapse').toggleClass('plus');
+            $head.find('.glyphicon').toggleClass('glyphicon-chevron-up, glyphicon-chevron-down');
+            console.log('toggle');
             $sec.slideToggle();
         },
         _tabClick: function (e) {
