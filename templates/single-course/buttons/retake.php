@@ -33,7 +33,7 @@ $user   = LP_Global::user();
 
         <input type="hidden" name="retake-course" value="<?php echo esc_attr( $course->get_id() ); ?>"/>
         <input type="hidden" name="retake-course-nonce"
-               value="<?php echo esc_attr( wp_create_nonce( sprintf( 'retake-course-%d-%d', $course->get_id(), get_current_user_id() ) ) ); ?>"/>
+               value="<?php echo esc_attr( wp_create_nonce( sprintf( 'retake-course-%d-%d', $course->get_id(), $user->get_id()) ) ); ?>"/>
 
         <button class="lp-button button button-retake-course">
 			<?php echo esc_html( sprintf( apply_filters( 'learn-press/retake-course-button-text', __( 'Retake course?', 'learnpress' ) )) ); ?>
