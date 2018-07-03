@@ -229,9 +229,9 @@ if ( ! function_exists( 'learn_press_add_course_buttons' ) ) {
 	function learn_press_add_course_buttons() {
 		add_action( 'learn-press/course-buttons', 'learn_press_course_purchase_button', 10 );
 		add_action( 'learn-press/course-buttons', 'learn_press_course_enroll_button', 15 );
-		add_action( 'learn-press/course-buttons', 'learn_press_course_retake_button', 20 );
+		//add_action( 'learn-press/course-buttons', 'learn_press_course_retake_button', 20 );
 		add_action( 'learn-press/course-buttons', 'learn_press_course_continue_button', 25 );
-		add_action( 'learn-press/course-buttons', 'learn_press_course_finish_button', 30 );
+		//add_action( 'learn-press/course-buttons', 'learn_press_course_finish_button', 30 );
 	}
 }
 
@@ -239,9 +239,9 @@ if ( ! function_exists( 'learn_press_remove_course_buttons' ) ) {
 	function learn_press_remove_course_buttons() {
 		remove_action( 'learn-press/course-buttons', 'learn_press_course_purchase_button', 10 );
 		remove_action( 'learn-press/course-buttons', 'learn_press_course_enroll_button', 15 );
-		remove_action( 'learn-press/course-buttons', 'learn_press_course_retake_button', 20 );
+		//remove_action( 'learn-press/course-buttons', 'learn_press_course_retake_button', 20 );
 		remove_action( 'learn-press/course-buttons', 'learn_press_course_continue_button', 25 );
-		remove_action( 'learn-press/course-buttons', 'learn_press_course_finish_button', 30 );
+		//remove_action( 'learn-press/course-buttons', 'learn_press_course_finish_button', 30 );
 	}
 }
 
