@@ -16,8 +16,7 @@ defined( 'ABSPATH' ) || exit();
 
 $course = LP_Global::course();
 $user   = LP_Global::user();
-?>
-
+/*
 <form class="lp-form form-button form-button-finish-course" method="post"
       data-confirm="<?php LP_Strings::esc_attr_e( 'confirm-finish-course', '', array( $course->get_title() ) ); ?>">
 
@@ -29,3 +28,5 @@ $user   = LP_Global::user();
     <input type="hidden" name="noajax" value="yes"/>
 
 </form>
+*/
+?> 
