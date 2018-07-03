@@ -32,7 +32,7 @@ $user   = LP_Global::user();
 		<?php do_action( 'learn-press/before-retake-button' ); ?>
 
         <input type="hidden" name="retake-course" value="<?php echo esc_attr( $course->get_id() ); ?>"/>
-        <input type="hidden" name="retake-course-nonce" class="<?php echo 'retake-course-%d-%d'.  $course->get_id(), $user->get_id(); ?>"
+        <input type="hidden" name="retake-course-nonce" class="<?php echo sprintf('retake-course-%d-%d',  $course->get_id(), $user->get_id()); ?>"
                value="<?php echo esc_attr( wp_create_nonce( sprintf( 'retake-course-%d-%d', $course->get_id(), $user->get_id()) ) ); ?>"/>
 
         <button class="lp-button button button-retake-course">
