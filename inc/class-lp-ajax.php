@@ -350,8 +350,8 @@ if ( ! class_exists( 'LP_AJAX' ) ) {
 		public static function retake_course() {
 			$security        = $_POST['retake-course-nonce' ];
 			$course_id       = LP_Request::get_int( 'course_id' );
-			$user            = learn_press_get_current_user();
-			$course          = learn_press_get_course( $course_id );
+			$course = LP_Global::course();
+			$user   = LP_Global::user();
 			$response        = array(
 				'result' => 'error'
 			);
