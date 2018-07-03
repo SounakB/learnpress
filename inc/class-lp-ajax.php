@@ -348,7 +348,7 @@ if ( ! class_exists( 'LP_AJAX' ) ) {
 		 * Retake course action
 		 */
 		public static function retake_course() {
-			$security        = LP_Request::get_string( 'retake-course-nonce' );
+			$security        = $_POST['retake-course-nonce' ];
 			$course_id       = LP_Request::get_int( 'course_id' );
 			$user            = learn_press_get_current_user();
 			$course          = learn_press_get_course( $course_id );
