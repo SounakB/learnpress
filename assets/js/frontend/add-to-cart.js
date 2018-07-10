@@ -26,5 +26,5 @@
         });
     }
 
-    $(document).ready(_ready);
+    //$(document).ready(_ready);
 })(jQuery);
