@@ -705,7 +705,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 				$theUser = learn_press_get_current_user();
 				$userCourses = learn_press_get_all_courses();
 				$hasPaid = false;
-				if(sizeof($theUser->get_purchased_courses()) > 1){
+				if(sizeof($theUser->get_purchased_courses()[0][0]) > 0){
 					$hasPaid = true;
 				}
 				/*
