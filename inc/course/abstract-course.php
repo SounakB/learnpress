@@ -706,7 +706,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 				$userCourses = learn_press_get_all_courses();
 				$hasPaid = false;
 				foreach($userCourses as $c){
-					if($theUser->has_purchased_course($c->get_id())){
+					if($theUser->has_purchased_course($c)){
 						$hasPaid = true;
 					}
 				}
