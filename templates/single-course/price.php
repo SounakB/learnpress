@@ -30,7 +30,7 @@ if ( ! $price = $course->get_price_html() ) {
 
 	<?php } ?>
 
-    <span class="price"><?php echo $price . $user-get_purchased_courses()[0]; ?></span>
+    <span class="price"><?php echo $price . $user->get_purchased_courses()[0]; ?></span>
 
 </div>
 
