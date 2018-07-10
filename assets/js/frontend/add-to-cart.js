@@ -2,6 +2,7 @@
     "use strict";
     function _ready() {
         $('form.purchase-course').submit(function () {
+            console.log('adding course');
             alert();
             var $button = $('button.purchase-button', this),
                 $view_cart = $('.view-cart-button', this);
@@ -26,5 +27,5 @@
         });
     }
 
-    //$(document).ready(_ready);
+    $(document).ready(_ready);
 })(jQuery);
