@@ -705,8 +705,10 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 				$theUser = learn_press_get_current_user();
 				$userCourses = learn_press_get_all_courses();
 				$hasPaid = false;
-				if (sizeof($theUser->get_purchased_courses()) > 0){
-					$hasPaid = true;
+				foreach($userCourses as $c){
+					if($theUser->has_purchased_course($c->get_id())){
+						$hasPaid = true;
+					}
 				}
 				$maybe_discount = LP()->settings->get( 'returning_customer_discount');
 				if ($hasPaid && $maybe_discount > 0){

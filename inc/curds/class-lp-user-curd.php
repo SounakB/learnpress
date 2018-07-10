@@ -1134,11 +1134,11 @@ class LP_User_CURD extends LP_Object_Data_CURD implements LP_Interface_CURD {
 
 			try {
 
-				$orders = $this->get_orders( $user_id, array( 'status' => 'completed' ) );
+				$orders = $this->get_orders( $user_id, array( 'status' => 'completed processing cancelled' ) );
 				$query  = array( 'total' => 0, 'pages' => 0, 'items' => false );
 
 				$orders = $this->get_orders( $user_id, array(
-					'status'         => 'completed',
+					'status'         => 'completed processing cancelled',
 					'group_by_order' => true
 				) );
 
