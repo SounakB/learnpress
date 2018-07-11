@@ -32,7 +32,7 @@ if ( $quiz_data->is_review_questions() ) {
         <span class="result-achieved"><?php echo $quiz_data->get_percent_result(); ?></span>
         <span class="result-require"><?php echo $quiz->get_passing_grade(); ?></span>
         <p class="result-message"><?php echo sprintf( __( 'Your grade is <strong>%s</strong>', 'learnpress' ), $quiz_data->get_percent_result() == '100%' ? __( 'Passed!', 'learnpress' ) : $quiz_data->get_percent_result() ); ?> </p>
-        <?php if($quiz_data->get_percent_result() == '100%') { ?> <a href=<?php if($next = $course->get_next_item()){ echo $next->get_permalink(); } else { echo site_url('course-catalog', 'https');} ?>> <button class="btn-primary">Continue Learning</button></a>
+        <?php if($quiz_data->get_percent_result() == '100%') { ?> <a href=<?php if($next = $course->get_next_item()){ echo $course->get_item_link($next); } else { echo site_url('course-catalog', 'https');} ?>> <button class="btn-primary">Continue Learning</button></a>
         <?php } ?>
     </div>
 
