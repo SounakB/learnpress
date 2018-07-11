@@ -18,6 +18,7 @@ $user      = LP_Global::user();
 $quiz      = LP_Global::course_item_quiz();
 $quiz_data = $user->get_quiz_data( $quiz->get_id() );
 $result    = $quiz_data->get_results( false );
+$course = LP_Global::course();
 
 if ( $quiz_data->is_review_questions() ) {
 	return;
@@ -31,7 +32,7 @@ if ( $quiz_data->is_review_questions() ) {
         <span class="result-achieved"><?php echo $quiz_data->get_percent_result(); ?></span>
         <span class="result-require"><?php echo $quiz->get_passing_grade(); ?></span>
         <p class="result-message"><?php echo sprintf( __( 'Your grade is <strong>%s</strong>', 'learnpress' ), $quiz_data->get_percent_result() == '100%' ? __( 'Passed!', 'learnpress' ) : $quiz_data->get_percent_result() ); ?> </p>
-        <?php if($quiz_data->get_percent_result() == '100%') { ?> <a href=<?php if(isset($next_item)){ echo $next_item->get_permalink(); } else { echo site_url('course-catalog', 'https');} ?>> <button class="btn-primary">Continue Learning</button></a>
+        <?php if($quiz_data->get_percent_result() == '100%') { ?> <a href=<?php if($next = $course->get_next_item()){ echo $next->get_permalink(); } else { echo site_url('course-catalog', 'https');} ?>> <button class="btn-primary">Continue Learning</button></a>
         <?php } ?>
     </div>
 
