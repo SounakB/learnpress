@@ -702,18 +702,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 			if ( ! $price /* || 'yes' != $this->get_data('payment') */ ) {
 				$price = 0;
 			} else {
-				$profile = learn_press_get_profile();
-				$hasPaid = false;
-				$filter_status = LP_Request::get_string( 'filter-status' );
-				$query = $profile->query_courses( 'purchased', array( 'status' => $filter_status ) );
-				if($query['items']){
-					foreach($query['items'] as $c){
-						$course = learn_press_get_course( $c->get_id() );
-						if(!$course->is_free()){
-							$hasPaid = true;
-						}
-					}
-				}
+				$is_return_cust = $this->is_returning();
 				/*
 				foreach($userCourses as $c){
 					if($theUser->has_purchased_course($c) && !learn_press_get_course($c)->is_free()){
@@ -722,7 +711,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 				}
 				*/
 				$maybe_discount = LP()->settings->get( 'returning_customer_discount');
-				if ($hasPaid && $maybe_discount > 0){
+				if ($is_return_cust && $maybe_discount > 0){
 					$price = floatval($price);
 					$price = $price - (($maybe_discount*$price)/100);
 				}
@@ -738,6 +727,23 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 
 			return apply_filters( 'learn-press/course-price', $price, $this->get_id() );
 		}
+
+		public function is_returning(){
+			$profile = learn_press_get_profile();
+			$hasPaid = false;
+			$filter_status = LP_Request::get_string( 'filter-status' );
+			$query = $profile->query_courses( 'purchased', array( 'status' => $filter_status ) );
+			if($query['items']){
+				foreach($query['items'] as $c){
+					$course = learn_press_get_course( $c->get_id() );
+					if(!$course->is_free()){
+						$hasPaid = true;
+					}
+				}
+			}
+			return $hasPaid;
+		}
+
 
 		/**
 		 * Get the price of course with html
