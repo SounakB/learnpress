@@ -702,11 +702,17 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 			if ( ! $price /* || 'yes' != $this->get_data('payment') */ ) {
 				$price = 0;
 			} else {
-				$theUser = learn_press_get_current_user();
-				$userCourses = learn_press_get_all_courses();
+				$profile = learn_press_get_profile();
 				$hasPaid = false;
-				if(sizeof($theUser->get_purchased_courses()[0][0]) > 0){
-					$hasPaid = true;
+				$filter_status = LP_Request::get_string( 'filter-status' );
+				$query = $profile->query_courses( 'purchased', array( 'status' => $filter_status ) );
+				if($query['items']){
+					foreach($query['items'] as $c){
+						$course = learn_press_get_course( $c->get_id() );
+						if(!$course->is_free()){
+							$hasPaid = true;
+						}
+					}
 				}
 				/*
 				foreach($userCourses as $c){
