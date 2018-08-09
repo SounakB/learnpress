@@ -702,7 +702,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 			if ( ! $price /* || 'yes' != $this->get_data('payment') */ ) {
 				$price = 0;
 			} else {
-				$is_return_cust = true;
+				$is_return_cust = false;
 				/*
 				foreach($userCourses as $c){
 					if($theUser->has_purchased_course($c) && !learn_press_get_course($c)->is_free()){
