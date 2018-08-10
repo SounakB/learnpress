@@ -193,7 +193,7 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 			if(sizeof($query['items']) > 1){
 				$hasPaid = true;
 			}
-			return $hasPaid
+			return $hasPaid;
 		}
 		/**
 		 * @param int $item_id
