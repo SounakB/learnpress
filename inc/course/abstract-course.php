@@ -104,6 +104,7 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 			if ( $this->get_id() > 0 ) {
 				$this->load();
 			}
+			add_filter('learn_press_course_price', array($this, 'is_returning'), 10, 1);
 		}
 
 		/**
@@ -744,7 +745,6 @@ if ( ! function_exists( 'LP_Abstract_Course' ) ) {
 			return $price;
 		}
 
-		add_filter('learn_press_course_price', array($this, 'is_returning'), 10, 1)
 
 		/**
 		 * Get the price of course with html
