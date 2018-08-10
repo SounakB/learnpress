@@ -190,7 +190,7 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 			$hasPaid = false;
 			$filter_status = LP_Request::get_string( 'filter-status' );
 			$query = $this->get_purchased_courses();
-			//if($query['items']){
+			if($query['items']){
 				foreach($query['items'] as $c){
 					//if($c != $currentID){
 						$course = learn_press_get_course( $c->get_id() );
@@ -198,7 +198,7 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 							$hasPaid = true;
 						}
 					//}
-				//}
+				}
 			}
 		}
 		/**
