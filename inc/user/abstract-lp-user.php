@@ -182,6 +182,25 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 		}
 
 		/**
+		 * @return Bool
+		 * Will return true or false depending on wheter the user is a 
+		 * returning customer or not
+		 */
+		public function is_returning(){
+			$profile = learn_press_get_profile();
+			$hasPaid = false;
+			$filter_status = LP_Request::get_string( 'filter-status' );
+			$query = $profile->query_courses( 'purchased', array( 'status' => $filter_status ) );
+			if($query['items']){
+				foreach($query['items'] as $c){
+					$course = learn_press_get_course( $c->get_id() );
+					if(!$course->is_free()){
+						$hasPaid = true;
+					}
+				}
+			}
+		}
+		/**
 		 * @param int $item_id
 		 * @param int $course_id
 		 *
