@@ -186,16 +186,17 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 		 * Will return true or false depending on wheter the user is a 
 		 * returning customer or not
 		 */
-		public function is_returning(){
-			$profile = learn_press_get_profile();
+		public function is_returning($currentID){
 			$hasPaid = false;
 			$filter_status = LP_Request::get_string( 'filter-status' );
-			$query = $profile->query_courses( 'purchased', array( 'status' => $filter_status ) );
-			if($query['items']){
-				foreach($query['items'] as $c){
-					$course = learn_press_get_course( $c->get_id() );
-					if(!$course->is_free()){
-						$hasPaid = true;
+			$query = $this->get_purchased_courses();
+			if($query){
+				foreach($query as $c){
+					if($c != $currentID){
+						$course = learn_press_get_course( $c->get_id() );
+						if(!$course->is_free()){
+							$hasPaid = true;
+						}
 					}
 				}
 			}
