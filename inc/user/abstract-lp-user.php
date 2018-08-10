@@ -190,9 +190,10 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 			$hasPaid = false;
 			$filter_status = LP_Request::get_string( 'filter-status' );
 			$query = $this->get_purchased_courses();
-			if(sizeof($query['items']) > 0){
+			if(sizeof($query['items']) > 1){
 				$hasPaid = true;
 			}
+			return $hasPaid
 		}
 		/**
 		 * @param int $item_id
