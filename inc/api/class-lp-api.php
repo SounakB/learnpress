@@ -8,7 +8,7 @@ class LP_API{
     //api endpoint for url
     protected $api_endpoint = 'lp-api-v1';
     //an array that holds string names supported cpts
-    static $supported_items = array('courses', 'lessons');
+    static $supported_items = array('courses', 'lessons', 'certified_instructors');
 
 
     function __construct(){

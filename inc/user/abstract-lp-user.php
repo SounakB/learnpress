@@ -186,7 +186,7 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 		 * Will return true or false depending on wheter the user is a 
 		 * returning customer or not
 		 */
-		public function is_returning($currentID){
+		public function is_returning(){
 			$hasPaid = false;
 			$filter_status = LP_Request::get_string( 'filter-status' );
 			$query = $this->get_purchased_courses();

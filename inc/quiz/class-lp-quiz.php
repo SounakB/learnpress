@@ -187,6 +187,15 @@ if ( ! class_exists( 'LP_Quiz' ) ) {
 		 * @return array|mixed
 		 */
 		public function get_show_result() {
+			// we need a hook that we can use to trigger a check 
+			// to see if the user has passed this whole course, if they have
+			// then we check if the users background check has passed,
+			// if it has we will send our edu admin an email 
+			// to notify them that the current user has been certified in the 
+			// respective course, this hook will be called from a plugin addon that
+			// we are already using, keeping that custom functionality out of the 
+			// learnpress main codebase
+			do_action('strider_bikes_check_if_course_passed'); 	
 			return $this->get_data( 'show_result' ) === 'yes';
 		}
 
