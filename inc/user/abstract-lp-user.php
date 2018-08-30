@@ -2031,7 +2031,7 @@ if ( ! class_exists( 'LP_Abstract_User' ) ) {
 			} else {
 				$results = 0;
 			}
-
+			do_action('striderbikes_learnpress_passed_course', $this->get_id());
 			return apply_filters( 'learn_press_user_has_passed_course', $results >= $course->passing_condition ? $results : false, $course_id, $this );
 		}
 
