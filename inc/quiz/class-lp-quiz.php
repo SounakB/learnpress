@@ -195,7 +195,8 @@ if ( ! class_exists( 'LP_Quiz' ) ) {
 			// respective course, this hook will be called from a plugin addon that
 			// we are already using, keeping that custom functionality out of the 
 			// learnpress main codebase
-			do_action('strider_bikes_check_if_course_passed'); 	
+			$userID = get_current_user_id();
+			do_action('strider_bikes_check_if_course_passed', $userID); 	
 			return $this->get_data( 'show_result' ) === 'yes';
 		}
 
