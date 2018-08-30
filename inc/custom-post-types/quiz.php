@@ -324,7 +324,7 @@ if ( ! class_exists( 'LP_Quiz_Post_Type' ) ) {
 								array(
 									'field'   => '_lp_show_check_answer',
 									'compare' => '!=',
-									'value'   => '0'
+									'value'   => 'no'
 								)
 							)
 						)
