@@ -25,7 +25,7 @@ $hide_next = get_post_meta($quiz->get_id(), '_lp_hide_finish_until_last', true);
 <?php $quiz = LP_Global::course_item_quiz(); ?>
 
 <?php do_action( 'learn-press/quiz/before-complete-button' ); ?>
-<?php if (!$hide_next == 'yes' || !( $next_id = $user->get_next_question( $quiz->get_id(), $course_id ) ) ) { ?>
+<?php if ($hide_next != 'yes' || !( $next_id = $user->get_next_question( $quiz->get_id(), $course_id ) ) ) { ?>
     <form name="complete-quiz" class="complete-quiz form-button lp-form" method="post" enctype="multipart/form-data">
 
     <form name="complete-quiz"
