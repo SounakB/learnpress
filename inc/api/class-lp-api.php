@@ -17,42 +17,45 @@ class LP_API{
     }
 
     function register_lp_course_rest_ep(){
+      if(!is_admin()){
         register_rest_route( $this->api_endpoint,'/courses', array(
-            'methods' => 'GET',
-            'callback' => array($this,'get_REST_courses'),/*
-            'args' => array(
-              'id' => array(
-                'validate_callback' => function($param, $request, $key) {
-                  return is_numeric( $param );
-                }
-              ),
-            ),*/
-          ) );
-         // if you have the learning path plugin installed you can use this to pull 
-         // your paths 
-          register_rest_route( $this->api_endpoint,'/learningpaths', array(
-            'methods' => 'GET',
-            'callback' => array($this,'get_REST_learningpaths'),/*
-            'args' => array(
-              'id' => array(
-                'validate_callback' => function($param, $request, $key) {
-                  return is_numeric( $param );
-                }
-              ),
-            ),*/
-          ) );
-            // gets the curriculum for a specified(id) course
-          register_rest_route( $this->api_endpoint,'/courses/(?P<id>\d+)', array(
-            'methods' => 'GET',
-            'callback' => array($this,'get_REST_course_curriculum'),
-            'args' => array(
-              'id' => array(
-                'validate_callback' => function($param) {
-                  return is_numeric( $param );
-                }
-              ),
+          'methods' => 'GET',
+          'callback' => array($this,'get_REST_courses'),/*
+          'args' => array(
+            'id' => array(
+              'validate_callback' => function($param, $request, $key) {
+                return is_numeric( $param );
+              }
             ),
-          ) );
+          ),*/
+        ) );
+       // if you have the learning path plugin installed you can use this to pull 
+       // your paths 
+        register_rest_route( $this->api_endpoint,'/learningpaths', array(
+          'methods' => 'GET',
+          'callback' => array($this,'get_REST_learningpaths'),/*
+          'args' => array(
+            'id' => array(
+              'validate_callback' => function($param, $request, $key) {
+                return is_numeric( $param );
+              }
+            ),
+          ),*/
+        ) );
+          // gets the curriculum for a specified(id) course
+        register_rest_route( $this->api_endpoint,'/courses/(?P<id>\d+)', array(
+          'methods' => 'GET',
+          'callback' => array($this,'get_REST_course_curriculum'),
+          'args' => array(
+            'id' => array(
+              'validate_callback' => function($param) {
+                return is_numeric( $param );
+              }
+            ),
+          ),
+        ) );
+      }
+
     }
 
     //get the course curriculum
