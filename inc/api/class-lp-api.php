@@ -28,7 +28,11 @@ class LP_API{
               ),
             ),*/
           ) );
-          register_rest_route($this->api_endpoint, '/certified_instructors', array(
+          /** this enpoint will not be used at all unless you are running the striderbikes
+           * learning suite which includes our own flavor of learnpress and several plugins 
+           * for instructor certification
+          **/
+           register_rest_route($this->api_endpoint, '/certified_instructors', array(
             'methods' => 'GET',
             'callback' => array($this, 'get_REST_certified_instructors'),
           ));
@@ -77,7 +81,7 @@ class LP_API{
   }
 
   // returns a list of certified instructors
-  function get_REST_learningpaths(){
+  function get_REST_certified_instructors(){
     $users = get_users();
     $certified = array();
     foreach($users as $u) {
