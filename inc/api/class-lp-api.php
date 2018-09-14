@@ -91,7 +91,7 @@ class LP_API{
         $certified[$user_name] = $certCourses;
       } 
     }
-    return json_encode($certified);
+    return $certified;
   }
 
       /**
