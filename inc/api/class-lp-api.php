@@ -28,6 +28,10 @@ class LP_API{
               ),
             ),*/
           ) );
+          register_rest_route($this->api_endpoint, '/certified_instructors', array(
+            'methods' => 'GET',
+            'callback' => array($this, 'get_REST_certified_instructors'),
+          ));
          // if you have the learning path plugin installed you can use this to pull 
          // your paths 
           register_rest_route( $this->api_endpoint,'/learningpaths', array(
@@ -70,6 +74,38 @@ class LP_API{
     function get_REST_learningpaths () {
       $all_courses = $this->get_posts_by_type('lp_learning_path_cpt');
       return $all_courses;
+  }
+
+  // returns a list of certified instructors
+  function get_REST_learningpaths(){
+    $users = get_users();
+    $certified = array();
+    foreach($users as $u) {
+      $certCourses = $this->get_certification_courses_passed($u->id);
+      if(sizeof($certCourses) > 0){
+        $certified[$user->display_name] = $certCourses;
+      } 
+    }
+    return $certified;
+  }
+
+      /**
+     * this is used in by multiple methods
+     * @input int user id
+     * @out array of courses passed  
+     */
+    function get_certification_courses_passed($uID){
+      $courses = learn_press_get_all_courses();
+      $certCourses = array();
+      foreach($courses as $c){
+          $lp_course = LP_Course::get_course($c);
+          $user_grade = $lp_course->evaluate_course_results($uID);
+          //echo $user_grade . ' ' . $lp_course->passing_condition . ' ';
+          if($user_grade == 100 && get_the_title($c) != 'Brand Enthusiast'){
+              $certCourses[] = $c;
+          }
+      }
+      return $certCourses;
   }
     // bit of sql to get all the courses
     function get_posts_by_type($type = 'lp_course') {
