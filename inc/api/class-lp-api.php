@@ -87,7 +87,7 @@ class LP_API{
     foreach($users as $u) {
       $certCourses = $this->get_certification_courses_passed($u->ID);
       if(sizeof($certCourses) > 0){
-        $certified[$user->user_email] = $certCourses;
+        $certified[] = $u->display_name;
       } 
     }
     return $certified;
