@@ -87,10 +87,11 @@ class LP_API{
     foreach($users as $u) {
       $certCourses = $this->get_certification_courses_passed($u->ID);
       if(sizeof($certCourses) > 0){
-        $certified[] = $u->display_name;
+        $user_name = implode('_', explode(' ', $u->display_name));
+        $certified[$user_name] = $certCourses;
       } 
     }
-    return $certified;
+    return json_encode($certified);
   }
 
       /**
@@ -104,9 +105,10 @@ class LP_API{
       foreach($courses as $c){
           $lp_course = LP_Course::get_course($c);
           $user_grade = $lp_course->evaluate_course_results($uID);
+          $cTitle = get_the_title($c);
           //echo $user_grade . ' ' . $lp_course->passing_condition . ' ';
-          if($user_grade == 100 && get_the_title($c) != 'Brand Enthusiast'){
-              $certCourses[] = $c;
+          if($user_grade == 100 && $cTitle != 'Brand Enthusiast'){
+              $certCourses[] = $cTitle;
           }
       }
       return $certCourses;
