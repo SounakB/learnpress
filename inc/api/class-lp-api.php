@@ -87,7 +87,7 @@ class LP_API{
     foreach($users as $u) {
       $certCourses = $this->get_certification_courses_passed($u->ID);
       $bgStatus = get_user_meta($uID, 'user_bg_check_passed', true);
-      if(sizeof($certCourses) > 0 && $bgStatus == true){
+      if(sizeof($certCourses) > 0 && $bgStatus != false){
         $user_name = $u->user_firstname .'_'. $u->user_lastname .'_'. $u->user_email;
         $certified[$user_name] = $certCourses;
       } 
